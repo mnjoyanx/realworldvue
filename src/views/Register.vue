@@ -19,6 +19,7 @@
                 type="text"
                 class="form-control form-control-lg"
                 placeholder="Username"
+                v-model="name"
               />
             </fieldset>
 
@@ -27,6 +28,7 @@
                 type="text"
                 class="form-control form-control-lg"
                 placeholder="Email"
+                v-model="email"
               />
             </fieldset>
 
@@ -35,6 +37,7 @@
                 type="password"
                 class="form-control form-control-lg"
                 placeholder="Password"
+                v-model="password"
               />
             </fieldset>
             <button class="btn btn-lg btn-success float-right" :disabled="isSubmitting">Sign Up</button>
@@ -49,6 +52,13 @@
 <script>
 export default {
   name: "RwlRegister",
+  data() {
+    return {
+      name: '',
+      email: '',
+      password: ''
+    }
+  },
   computed: {
     isSubmitting() {
       return this.$store.state.auth.isSubmitting;
@@ -56,8 +66,17 @@ export default {
   },
   methods: {
     submitForm() {
+      const credentials = {
+        username: this.name,
+        email: this.email,
+        password: this.password
+      }
       console.log(this.$store.state.auth.isSubmitting);
-      this.$store.commit("REGISTER_START");
+      // this.$store.commit("REGISTER_START");
+      this.$store.dispatch('SIGN_UP', credentials)
+        .then(user => {
+          console.log('successfuly register', user);
+        })
     },
   },
 };
