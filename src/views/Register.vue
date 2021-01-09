@@ -62,7 +62,7 @@ export default {
   computed: {
     isSubmitting() {
       return this.$store.state.auth.isSubmitting;
-    },
+    }
   },
   methods: {
     submitForm() {
@@ -75,6 +75,7 @@ export default {
       // this.$store.commit("REGISTER_START");
       this.$store.dispatch('SIGN_UP', credentials)
         .then(user => {
+          this.$router.push({name: 'home'})
           console.log('successfuly register', user);
         })
     },
