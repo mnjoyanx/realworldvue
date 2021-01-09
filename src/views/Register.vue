@@ -40,7 +40,13 @@
                 v-model="password"
               />
             </fieldset>
-            <button class="btn btn-lg btn-success float-right" :disabled="isSubmitting">Sign Up</button>
+            <rwl-errors />
+            <button
+              class="btn btn-lg btn-success float-right"
+              :disabled="isSubmitting"
+            >
+              Sign Up
+            </button>
           </form>
         </div>
       </div>
@@ -48,16 +54,20 @@
   </div>
 </template>
 
-
 <script>
+import RwlErrors from "@/components/Errors.vue";
+
 export default {
   name: "RwlRegister",
   data() {
     return {
-      name: '',
-      email: '',
-      password: ''
-    }
+      name: "",
+      email: "",
+      password: ""
+    };
+  },
+  components: {
+    RwlErrors
   },
   computed: {
     isSubmitting() {
@@ -70,15 +80,14 @@ export default {
         username: this.name,
         email: this.email,
         password: this.password
-      }
+      };
       console.log(this.$store.state.auth.isSubmitting);
       // this.$store.commit("REGISTER_START");
-      this.$store.dispatch('SIGN_UP', credentials)
-        .then(user => {
-          this.$router.push({name: 'home'})
-          console.log('successfuly register', user);
-        })
-    },
-  },
+      this.$store.dispatch("SIGN_UP", credentials).then(user => {
+        this.$router.push({ name: "home" });
+        console.log("successfuly register", user);
+      });
+    }
+  }
 };
 </script>

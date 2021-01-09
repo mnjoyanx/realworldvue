@@ -1,6 +1,5 @@
-import axios from 'axios'
+import axios from "axios";
 
+axios.defaults.baseURL = "https://conduit.productionready.io/api/";
 
-axios.defaults.baseURL = 'https://conduit.productionready.io/api/'
-
-export default axios
+export default axios;

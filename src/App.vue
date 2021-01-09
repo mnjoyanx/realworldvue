@@ -9,5 +9,5 @@
 </template>
 
 <style lang="scss">
-  @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
 </style>
