@@ -8,11 +8,12 @@
             <router-link
               tag="p"
               class="text-center text-success"
-              :to="{ name: 'signUp' }"
+              :to="{ name: 'signIn' }"
               >Need an account?</router-link
             >
           </p>
-          VALIDATION ERRORS TODO
+          <rwl-errors />
+
           <form action="" @submit.prevent="submitForm">
             <fieldset class="form-group">
               <input
@@ -40,7 +41,6 @@
                 v-model="password"
               />
             </fieldset>
-            <rwl-errors />
             <button
               class="btn btn-lg btn-success float-right"
               :disabled="isSubmitting"
@@ -81,7 +81,6 @@ export default {
         email: this.email,
         password: this.password
       };
-      console.log(this.$store.state.auth.isSubmitting);
       // this.$store.commit("REGISTER_START");
       this.$store.dispatch("SIGN_UP", credentials).then(user => {
         this.$router.push({ name: "home" });
