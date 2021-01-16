@@ -20,14 +20,56 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <router-link active-class="active__class" :to="{ name: name }" tag="li"
-          v-for="({ name, title }, key) in routes"
-          :key="key"
+        <router-link
+          exact
+          :to="{name: 'home'}"
+          tag="li"
+          active-class="active__class"
         >
-          <span href="#" class="btn">
-            {{ title }}
-          </span>
+          <span role="button">Home</span>
         </router-link>
+        <template v-if="isLoggedIn">
+          <router-link
+
+            :to="{name: 'homes'}"
+            tag="li"
+            active-class="active__class"
+          >
+            <span role="button">New Article</span>
+          </router-link>
+
+          <router-link
+            :to="{name: 'homes'}"
+            tag="li"
+            active-class="active__class"
+          >
+            <span role="button">Settigns</span>
+          </router-link>
+
+          <router-link
+            :to="{name: 'homse'}"
+            tag="li"
+            active-class="active__class"
+          >
+            <span role="button">{{ currentUser.username }}</span>
+          </router-link>
+        </template>
+        <template v-if="!isLoggedIn">
+          <router-link
+            :to="{name: 'signIn'}"
+            tag="li"
+            active-class="active__class"
+          >
+            <span role="button">Sign In</span>
+          </router-link>
+          <router-link
+            :to="{name: 'signUp'}"
+            tag="li"
+            active-class="active__class"
+          >
+           <span role="button">Sign Up</span>
+          </router-link>
+        </template>
       </ul>
     </div>
   </nav>
@@ -38,17 +80,10 @@ import { mapState } from 'vuex'
 
 export default {
   name: "RwlNavBar",
-  data() {
-    return {
-      routes: [
-        { url: "/register", name: "signUp", title: "Sign Up" },
-        { url: "/login", name: "signIn", title: "Sign In" },
-      ],
-    }
-  },
   computed: {
     ...mapState({
-      currentUser: state => state.auth.currentUser
+      currentUser: state => state.auth.currentUser,
+      isLoggedIn: state => state.auth.isLoggedIn
     })
   }
 };

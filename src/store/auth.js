@@ -84,8 +84,15 @@ const actions = {
   }
 }
 
+const getters = {
+  isSubmitting(state) {
+    return state.isSubmitting
+  }
+}
+
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters
 }
