@@ -31,6 +31,7 @@ const mutations = {
   },
 
   LOGIN_SUCCESS(state, payload) {
+    console.log(payload);
     state.isSubmitting = false
     state.currentUser = payload
     state.isLoggedIn = true
@@ -71,7 +72,7 @@ const actions = {
       commit('LOGIN_START')
       authApi.login(credentials)
         .then(res => {
-          commit('LOGIN_SUCCESS', credentials)
+          commit('LOGIN_SUCCESS', res.data.user)
           setItem("accessToken", res.data.user.token)
           resolve(res.data.user)
         })
