@@ -76,15 +76,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: "RwlNavBar",
   computed: {
-    ...mapState({
-      currentUser: state => state.auth.currentUser,
-      isLoggedIn: state => state.auth.isLoggedIn
-    })
+    ...mapGetters(['currentUser', 'isLoggedIn'])
   }
 };
 </script>

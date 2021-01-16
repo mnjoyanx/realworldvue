@@ -12,7 +12,7 @@
           >
         </p>
 
-        <rwl-errors />  
+        <rwl-errors />
 
         <form @submit.prevent="submitForm">
           <fieldset class="form-group">
@@ -45,9 +45,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
-import RwlErrors from "@/components/Errors"
+import RwlErrors from "@/components/Errors";
 
 export default {
   name: "RwlLogin",
@@ -55,29 +55,29 @@ export default {
     return {
       email: "",
       password: ""
-    }
+    };
   },
   components: {
     RwlErrors
   },
   computed: {
-    ...mapGetters(['isSubmitting'])
+    ...mapGetters(["isSubmitting"])
   },
   methods: {
     submitForm() {
       const user = {
         email: this.email,
-        password: this.password,
-      }
+        password: this.password
+      };
       this.$store
         .dispatch("SIGN_IN", user)
         .then(() => {
-            this.$router.push({ name:  "home" });
+          this.$router.push({ name: "home" });
         })
         .catch(err => {
-          console.log(err, 'err')
-        })
-    },
+          console.log(err, "err");
+        });
+    }
   }
 };
 </script>
