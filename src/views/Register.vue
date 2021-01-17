@@ -83,7 +83,7 @@ export default {
       };
       // this.$store.commit("REGISTER_START");
       this.$store.dispatch("SIGN_UP", credentials).then(user => {
-        this.$router.push({ name: "home" });
+        this.$router.push({ name: "globalFeed" });
         console.log("successfuly register", user);
       });
     }

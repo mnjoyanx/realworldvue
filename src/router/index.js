@@ -1,6 +1,5 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from "vue"
+import VueRouter from "vue-router"
 import store from '@/store'
 
 Vue.use(VueRouter);
@@ -8,8 +7,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: Home
+    name: "globalFeed",
+    component: () => import('@/views/GlobalFeed')
   },
   {
     path: "/register",

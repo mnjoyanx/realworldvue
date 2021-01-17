@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <ul class="navbar-nav">
-      <router-link to="/" tag="li" exact active-class="active__class">
+      <router-link :to="{name: 'globalFeed'}" tag="li" exact active-class="active__class">
         <strong role="button" class="text-success">conduit</strong>
       </router-link>
     </ul>
@@ -22,11 +22,11 @@
       <ul class="navbar-nav ml-auto">
         <router-link
           exact
-          :to="{name: 'home'}"
+          :to="{name: 'globalFeed'}"
           tag="li"
           active-class="active__class"
         >
-          <span role="button">Home</span>
+          <span role="button" class="mr-2 text-dark">Home</span>
         </router-link>
         <template v-if="isLoggedIn">
           <router-link
@@ -35,7 +35,7 @@
             tag="li"
             active-class="active__class"
           >
-            <span role="button">New Article</span>
+            <span role="button" class="mr-2 text-dark">New Article</span>
           </router-link>
 
           <router-link
@@ -43,7 +43,7 @@
             tag="li"
             active-class="active__class"
           >
-            <span role="button">Settigns</span>
+            <span role="button" class="mr-2 text-dark">Settigns</span>
           </router-link>
 
           <router-link
@@ -51,7 +51,7 @@
             tag="li"
             active-class="active__class"
           >
-            <span role="button">{{ currentUser.username }}</span>
+            <span role="button" class="text-dark">{{ currentUser.username }}</span>
           </router-link>
         </template>
         <template v-if="!isLoggedIn">
