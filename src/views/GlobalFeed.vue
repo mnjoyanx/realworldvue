@@ -9,17 +9,20 @@
         POPULAR TAGS
       </div>
     </div>
+    <rwl-pagination />
   </div>
   </div>
 </template>
 
 <script>
 import RwlFeed from '@/components/Feed'
+import RwlPagination from '@/components/Pagination'
 
 export default {
   name: "RwlGlobalFeed",
   components: {
-    RwlFeed
+    RwlFeed,
+    RwlPagination
   },
   data() {
     return {
