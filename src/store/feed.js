@@ -3,7 +3,8 @@ import apiFeed from '@/api/feed'
 const state = {
     data: null,
     isLoading: false,
-    error: null
+    error: null,
+
 }
 
 const mutations = {
@@ -13,6 +14,7 @@ const mutations = {
         state.error = null
     },
     GET_FEED_SUCCESS(state, payload) {
+        console.log(payload, 'paylaod');
         state.data = payload
         state.error = null
         state.isLoading = false
@@ -24,13 +26,13 @@ const mutations = {
 
 const actions = {
     GET_FEED({ commit }, apiUrl) {
+        console.log(apiUrl, 'getfeed apiurl');
         return new Promise(resolve => {
-            console.log(apiUrl, 'apiurl')
             commit('GET_FEED_START')
             apiFeed.getFeed(apiUrl)
                 .then(response => {
-                    console.log(response);
-                    commit('GET_FEED_SUCCESS', apiUrl)
+                    console.log(response.data, 'response data');
+                    commit('GET_FEED_SUCCESS', response.data)
                     resolve(response)
                 })
                 .catch(err => {
@@ -41,13 +43,8 @@ const actions = {
     }
 }
 
-const getters = {
-
-}
-
 export default {
     state,
     mutations,
     actions,
-    getters
 }
